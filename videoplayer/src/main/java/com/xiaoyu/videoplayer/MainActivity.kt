@@ -2,6 +2,7 @@ package com.xiaoyu.videoplayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -17,12 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val sourceAdapter = SourceAdapter()
         recyclerView.adapter = sourceAdapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                applicationContext,
-                RecyclerView.VERTICAL
-            )
-        )
         val vm = ViewModelProvider(this).get(SourcesViewModel::class.java)
         vm.getData().observe(this, Observer {
             sourceAdapter.setData(it)
